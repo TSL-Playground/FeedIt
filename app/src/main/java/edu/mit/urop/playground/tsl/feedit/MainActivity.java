@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity{
                     e.printStackTrace();
                     //if control comes here
                     //that means the encoded format not matches
-                    //in this case you can display whatever data is available on the qrcode
+                    //in this case you can display whatever data is available on the QR Code.
                     //to a toast
                     Toast.makeText(this, result.getContents(), Toast.LENGTH_LONG).show();
                 }
