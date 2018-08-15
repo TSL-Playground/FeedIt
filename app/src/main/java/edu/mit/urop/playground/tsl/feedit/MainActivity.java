@@ -120,6 +120,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
             Toast.makeText(this, "Hello, "+ account.getDisplayName(),Toast.LENGTH_SHORT).show();
 
             Intent toScanActivity = new Intent(MainActivity.this, ScanActivity.class);
+            toScanActivity.putExtra(ScanActivity.RECEIVE_EXTRA_KEY,account.getGivenName()+ "!");
             startActivity(toScanActivity);
 
 

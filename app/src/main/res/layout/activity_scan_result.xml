@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ScanResultActivity">
+
+
+
+
+    <TextView
+        android:id="@+id/tw_scan_situation_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="110dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        tools:text="Situation Text" />
+
+    <Button
+        android:id="@+id/btn_add_reaction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="220dp"
+        android:text="Add Reaction"
+        android:onClick="onAddReactionClick"
+        />
+
+    <Button
+        android:id="@+id/btn_view_reactions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/btn_add_reaction"
+        android:layout_marginEnd="45dp"
+        android:text="View Reactions"
+        android:onClick="onViewReactionsClicked"
+        />
+
+
+</RelativeLayout>

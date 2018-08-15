@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.zxing.client.android.Intents;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -18,22 +19,32 @@ import org.json.JSONObject;
 public class ScanActivity extends AppCompatActivity {
 
 
-    private TextView mQrCodeIdTw, mQrCodeTextTw;
-    private Button mScannerButton;
+
     private IntentIntegrator qrScanner;
+    public static final String RECEIVE_EXTRA_KEY = "x";
+    TextView mGreetingTw;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan);
 
-        init();
+        mGreetingTw = findViewById(R.id.tw_user_greeting);
+
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        Intent fromMainActivity = getIntent();
+
+        if(fromMainActivity!= null && fromMainActivity.hasExtra(RECEIVE_EXTRA_KEY))
+            mGreetingTw.setText("Hello, " + fromMainActivity.getStringExtra(RECEIVE_EXTRA_KEY));
+
+
+        qrScanner = new IntentIntegrator(this);
 
     }
 
@@ -43,10 +54,7 @@ public class ScanActivity extends AppCompatActivity {
         return true;
     }
 
-    public void onScanButtonClicked(View view){
 
-        qrScanner.initiateScan();
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -61,8 +69,17 @@ public class ScanActivity extends AppCompatActivity {
                     //converting the data to json
                     JSONObject obj = new JSONObject(result.getContents());
                     //setting values to textviews
-                    mQrCodeIdTw.setText(obj.getString("id"));
-                    mQrCodeTextTw.setText(obj.getString("text"));
+
+                    //Will be passed to the Post-Scan Activity.
+                    Bundle situationInfo = new Bundle();
+                    situationInfo.putInt(ScanResultActivity.SITUATION_ID_INTENT_KEY, Integer.valueOf(obj.getString("id")));
+                    situationInfo.putString(ScanResultActivity.SITUATION_TEXT_INTENT_KEY,obj.getString("text"));
+
+                    Intent toScanResultActivity = new Intent(this, ScanResultActivity.class);
+                    toScanResultActivity.putExtras(situationInfo);
+                    startActivity(toScanResultActivity);
+
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                     //if control comes here
@@ -77,10 +94,7 @@ public class ScanActivity extends AppCompatActivity {
         }
     }
 
-    private void init(){
-        mScannerButton = findViewById(R.id.btn_scan);
-        mQrCodeIdTw = findViewById(R.id.tw_scan_situation_id);
-        mQrCodeTextTw = findViewById(R.id.tw_scan_situation_text);
-        qrScanner = new IntentIntegrator(this);
+    public void scanButtonClicked(View view){
+        qrScanner.initiateScan();
     }
 }
