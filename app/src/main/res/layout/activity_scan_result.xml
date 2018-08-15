@@ -29,7 +29,7 @@
         android:layout_marginStart="45dp"
         android:layout_marginTop="220dp"
         android:text="Add Reaction"
-        android:onClick="onAddReactionClick"
+        android:onClick="onAddReactionClicked"
         />
 
     <Button

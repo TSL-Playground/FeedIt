@@ -40,7 +40,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".ScanActivity" />
-        <activity android:name=".ScanResultActivity"></activity>
+        <activity android:name=".ScanResultActivity" />
+        <activity android:name=".AddReactionActivity" />
+        <activity android:name=".ViewReactionsActivity"></activity>
     </application>
 
 </manifest>

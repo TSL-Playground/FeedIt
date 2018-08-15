@@ -3,6 +3,8 @@ package edu.mit.urop.playground.tsl.feedit;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class ScanResultActivity extends AppCompatActivity {
@@ -13,7 +15,7 @@ public class ScanResultActivity extends AppCompatActivity {
     int mSituationId;
     String mSituationText;
     TextView mTwSituationText;
-
+    Button mBtnAddReaction, mBtnViewReactions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,9 @@ public class ScanResultActivity extends AppCompatActivity {
         }
 
         mTwSituationText = findViewById(R.id.tw_scan_situation_text);
+        mBtnAddReaction = findViewById(R.id.btn_add_reaction);
+        mBtnViewReactions = findViewById(R.id.btn_view_reactions);
+
 
         displaySituationInfo();
     }
@@ -38,4 +43,21 @@ public class ScanResultActivity extends AppCompatActivity {
 
 
     }
+
+    public void onAddReactionClicked(View view){
+
+        Intent toAddReactionActivity = new Intent(this, AddReactionActivity.class);
+        toAddReactionActivity.putExtra(AddReactionActivity.RECEIVE_SITUATION_ID_KEY, mSituationId);
+        toAddReactionActivity.putExtra(AddReactionActivity.RECEIVE_SITUATION_TEXT_KEY, mSituationText);
+
+        startActivity(toAddReactionActivity);
+    }
+
+    public void onViewReactionsClicked(View view){
+
+
+    }
+
+
+
 }

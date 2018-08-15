@@ -6,6 +6,8 @@
         <item name="colorPrimary">#660066</item>
         <item name="colorPrimaryDark">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:textColorHint">#660066</item>
     </style>
 
 

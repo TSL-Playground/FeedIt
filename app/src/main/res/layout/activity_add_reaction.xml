@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddReactionActivity"
+    android:orientation="vertical"
+    android:padding="20dp"
+    >
+
+
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_reaction_title_input"
+        android:hint="Enter the title of the reaction..."
+        android:fontFamily="casual"
+        android:textSize="28sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:maxLength="100"
+        android:layout_marginBottom="30dp"
+        android:layout_gravity="center_horizontal"
+        android:textStyle="bold"
+        android:maxLines="3"
+        />
+
+    <EditText
+        android:id="@+id/et_reaction_desc_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Why was this the best reaction?"
+        android:fontFamily="casual"
+        android:textSize="28sp"
+        android:textColor="#660066"
+        android:maxLength="300"
+        android:maxLines="8"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center_horizontal"
+        android:textStyle="bold"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_submit_reaction"
+        android:onClick="onSubmitReactionTapped"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="90dp"
+        android:text="Submit"
+        />
+
+</LinearLayout>
