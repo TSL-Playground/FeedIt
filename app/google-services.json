@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "782633663516",
+    "firebase_url": "https://feeditrepo.firebaseio.com",
+    "project_id": "feeditrepo",
+    "storage_bucket": "feeditrepo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:782633663516:android:19246ba3ecddba43",
+        "android_client_info": {
+          "package_name": "edu.mit.urop.playground.tsl.feedit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "782633663516-u3pncmsk1k2h1ngdmi10b3vd12v9lqb6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.mit.urop.playground.tsl.feedit",
+            "certificate_hash": "e2bc01d9f83f6be2469d9f92b70c20b6668222d5"
+          }
+        },
+        {
+          "client_id": "782633663516-cn6fuetm3c55frm4c3uoklop3ibf2j7t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8JhueJegweeGKGWrUzaDRgaM5GFBEB-c"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "782633663516-cn6fuetm3c55frm4c3uoklop3ibf2j7t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
