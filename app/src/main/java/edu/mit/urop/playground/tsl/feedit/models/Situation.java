@@ -1,4 +1,4 @@
-package edu.mit.urop.playground.tsl.feedit;
+package edu.mit.urop.playground.tsl.feedit.models;
 
 public class Situation {
 

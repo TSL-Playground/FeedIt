@@ -1,11 +1,15 @@
-package edu.mit.urop.playground.tsl.feedit;
+package edu.mit.urop.playground.tsl.feedit.screens;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import edu.mit.urop.playground.tsl.feedit.R;
+import edu.mit.urop.playground.tsl.feedit.screens.AddReactionActivity;
 
 public class ScanResultActivity extends AppCompatActivity {
 
@@ -55,6 +59,10 @@ public class ScanResultActivity extends AppCompatActivity {
 
     public void onViewReactionsClicked(View view){
 
+        Intent toViewReactionsActivity = new Intent(this, ViewReactionsActivity.class);
+        toViewReactionsActivity.putExtra(ViewReactionsActivity.EXTRA_SITUATION_ID, mSituationId);
+
+        startActivity(toViewReactionsActivity);
 
     }
 

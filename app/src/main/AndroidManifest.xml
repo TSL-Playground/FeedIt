@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".screens.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -39,10 +39,10 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity android:name=".ScanActivity" />
-        <activity android:name=".ScanResultActivity" />
-        <activity android:name=".AddReactionActivity" />
-        <activity android:name=".ViewReactionsActivity"></activity>
+        <activity android:name=".screens.ScanActivity" />
+        <activity android:name=".screens.ScanResultActivity" />
+        <activity android:name=".screens.AddReactionActivity" />
+        <activity android:name=".screens.ViewReactionsActivity"></activity>
     </application>
 
 </manifest>

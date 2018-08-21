@@ -1,20 +1,20 @@
-package edu.mit.urop.playground.tsl.feedit;
+package edu.mit.urop.playground.tsl.feedit.screens;
 
 import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.zxing.client.android.Intents;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import edu.mit.urop.playground.tsl.feedit.R;
 
 public class ScanActivity extends AppCompatActivity {
 

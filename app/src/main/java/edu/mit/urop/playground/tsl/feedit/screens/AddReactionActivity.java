@@ -1,18 +1,25 @@
-package edu.mit.urop.playground.tsl.feedit;
+package edu.mit.urop.playground.tsl.feedit.screens;
 
 import android.content.Intent;
-import android.content.pm.PackageManager;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-public class AddReactionActivity extends AppCompatActivity {
+import edu.mit.urop.playground.tsl.feedit.R;
+import edu.mit.urop.playground.tsl.feedit.models.Reaction;
+
+public class AddReactionActivity extends AppCompatActivity{
 
     public static final String RECEIVE_SITUATION_TEXT_KEY = "19";
     public static final String RECEIVE_SITUATION_ID_KEY = "20";
@@ -62,6 +69,13 @@ public class AddReactionActivity extends AppCompatActivity {
 
         mDatabaseFeedIt.child(autogenReactionId).setValue(reaction);
 
+        Toast.makeText(getApplicationContext(), "Thank you!, your response is submitted.", Toast.LENGTH_SHORT).show();
 
+        mReactionDescriptionInput.setText("");
+        mReactionTitleInput.setText("");
+
+        Intent toScanActivity = new Intent(this, ScanActivity.class);
+        startActivity(toScanActivity);
     }
+
 }
