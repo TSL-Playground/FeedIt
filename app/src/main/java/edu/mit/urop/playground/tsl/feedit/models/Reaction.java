@@ -6,18 +6,23 @@ public class Reaction {
 
     //id of the situation this reaction is associated with.
 
+    String mDescription;
+    int mNumberLikes;
+    int mNumberDislikes;
     int mSituationId;
     String mTitle;
-    String mDescription;
+
 
     //Default constructor for read operations.
     public Reaction() {
     }
 
-    public Reaction(int situationId, String title, String description){
+    public Reaction(int situationId, String title, String description, int numberLikes, int numberDislikes){
         mSituationId = situationId;
         mTitle = title;
         mDescription = description;
+        mNumberLikes = numberLikes;
+        mNumberDislikes = numberDislikes;
 
     }
 
@@ -30,4 +35,12 @@ public class Reaction {
     }
 
     public String getmDescription() {return mDescription;}
+
+    public int getmNumberLikes() {
+        return mNumberLikes;
+    }
+
+    public int getmNumberDislikes() {
+        return mNumberDislikes;
+    }
 }

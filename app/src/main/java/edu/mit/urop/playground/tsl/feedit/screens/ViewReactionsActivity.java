@@ -1,6 +1,7 @@
 package edu.mit.urop.playground.tsl.feedit.screens;
 
 import android.content.Intent;
+import android.renderscript.Sampler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -48,12 +50,15 @@ public class ViewReactionsActivity extends AppCompatActivity implements ValueEve
             Log.d(TAG, "Error in passing the intent from ScanResultActivity to ViewReactionsActivity");
 
 
-        mDatabaseRef.addValueEventListener(this);
+
         recyclerView = findViewById(R.id.rw_grid_container);
         recyclerView.setHasFixedSize(true);
-        GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
+        GridLayoutManager layoutManager = new GridLayoutManager(this, 1);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
+
+        Query firebaseQuery = mDatabaseRef.orderByChild("mSituationId").equalTo(mScannedSituationId);
+        firebaseQuery.addValueEventListener(this);
 
     }
 
@@ -77,12 +82,10 @@ public class ViewReactionsActivity extends AppCompatActivity implements ValueEve
     }
 
 
+
     @Override
     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-        mDatabaseRef.orderByKey().addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 retrievedReactions = new ArrayList<>();
 
@@ -97,18 +100,11 @@ public class ViewReactionsActivity extends AppCompatActivity implements ValueEve
                 recyclerView.setAdapter(adapter);
 
 
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
     }
 
     @Override
     public void onCancelled(@NonNull DatabaseError databaseError) {
 
     }
+
 }

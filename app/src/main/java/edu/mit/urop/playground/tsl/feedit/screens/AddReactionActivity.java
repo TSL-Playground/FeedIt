@@ -65,7 +65,9 @@ public class AddReactionActivity extends AppCompatActivity{
 
         String autogenReactionId = mDatabaseFeedIt.push().getKey(); // auto-generated unique id for the reaction.
 
-        Reaction reaction = new Reaction(mSituationId, reactionTitle, reactionDescription);
+
+        //Default values of number of likes and dislikes are 0. (last two arguments of the constructor.)
+        Reaction reaction = new Reaction(mSituationId, reactionTitle, reactionDescription, 0, 0);
 
         mDatabaseFeedIt.child(autogenReactionId).setValue(reaction);
 
