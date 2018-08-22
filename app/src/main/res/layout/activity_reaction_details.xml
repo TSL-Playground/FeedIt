@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".screens.ReactionDetailsActivity"
+    android:orientation="vertical"
+    android:padding="16dp"
+    >
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tw_reaction_detail_title"
+        android:textSize="30sp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        tools:text="Tested Reaction"
+        android:gravity="center_horizontal"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tw_reaction_detail_description"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+        tools:text="aldhsadjhsakdjhaskdjshdkasjhdjskhdasjkdhasjkdbasjkd"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:layout_marginTop="30dp"
+
+        >
+
+        <ImageButton
+            android:id="@+id/btn_detail_like"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:gravity="center_horizontal"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/like"
+            android:onClick="onLikeButtonClicked"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tw_num_likes"
+            android:textSize="22sp"
+            tools:text="12"
+            android:textStyle="bold"
+            />
+
+        <ImageButton
+            android:id="@+id/btn_detail_dislike"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:gravity="center_horizontal"
+            android:background="@drawable/dislike"
+            android:layout_marginStart="80dp"
+            android:onClick="onDislikeButtonClicked"
+            android:layout_marginEnd="30dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tw_num_dislikes"
+            android:textSize="22sp"
+            tools:text="9"
+            android:textStyle="bold"
+            />
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

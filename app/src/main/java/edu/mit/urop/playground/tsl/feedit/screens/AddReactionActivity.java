@@ -67,7 +67,7 @@ public class AddReactionActivity extends AppCompatActivity{
 
 
         //Default values of number of likes and dislikes are 0. (last two arguments of the constructor.)
-        Reaction reaction = new Reaction(mSituationId, reactionTitle, reactionDescription, 0, 0);
+        Reaction reaction = new Reaction(autogenReactionId, mSituationId, reactionTitle, reactionDescription, 0, 0, null);
 
         mDatabaseFeedIt.child(autogenReactionId).setValue(reaction);
 

@@ -29,7 +29,6 @@ dependencies {
     //Using recyclerview for an efficient display of the reaction list.
     implementation 'com.android.support:recyclerview-v7:27.1.1'
 
-
     //SignIn with Google using Firebase.
     implementation 'com.google.firebase:firebase-core:16.0.1'
     implementation 'com.google.firebase:firebase-auth:11.6.0'
@@ -44,6 +43,11 @@ dependencies {
     //Facebook authentication.
     implementation 'com.facebook.android:facebook-android-sdk:[4,5)'
     implementation 'com.facebook.android:facebook-login:[4,5)'
+
+
+    //Parceler library for de(serializing model POJOs to pass them within Bundles.)
+    implementation 'org.parceler:parceler-api:1.1.11'
+    annotationProcessor 'org.parceler:parceler:1.1.11'
 
 
 }

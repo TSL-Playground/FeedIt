@@ -26,6 +26,7 @@
             android:textSize="22sp"
             tools:text= "Test Reaction"
             android:id="@+id/tw_reaction_item_title"
+            android:clickable="true"
             />
 
         <LinearLayout
@@ -35,39 +36,40 @@
             >
 
             <ImageView
+                android:id="@+id/iw_number_likes"
                 android:layout_width="38dp"
                 android:layout_height="38dp"
                 android:layout_gravity="right"
                 android:src="@drawable/like"
                 android:clickable="true"
-                android:onClick="onLikeButtonClicked"
 
                 />
 
             <TextView
                 android:layout_width="80dp"
                 android:layout_height="40dp"
-                android:id="@+id/iw_number_likes"
+                android:id="@+id/tw_likes_count"
                 tools:textSize="25sp"
                 tools:text="12"
                 android:gravity="center"
                 android:textStyle="bold"
                 android:layout_marginEnd="20dp"
+
                 />
 
             <ImageView
+                android:id="@+id/iw_number_dislikes"
                 android:layout_width="38dp"
                 android:layout_height="38dp"
                 android:layout_gravity="end"
                 android:src="@drawable/dislike"
                 android:clickable="true"
-                android:onClick="onDislikeClicked"
                 />
 
             <TextView
                 android:layout_width="80dp"
                 android:layout_height="40dp"
-                android:id="@+id/iw_number_dislikes"
+                android:id="@+id/tw_dislike_count"
                 tools:textSize="25sp"
                 tools:text="5"
                 android:gravity="center"
