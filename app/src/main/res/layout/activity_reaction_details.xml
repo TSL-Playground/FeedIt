@@ -8,6 +8,16 @@
     android:padding="16dp"
     >
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
     <TextView
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
@@ -27,6 +37,7 @@
         android:layout_marginTop="30dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Caption"
         tools:text="aldhsadjhsakdjhaskdjshdkasjhdjskhdasjkdhasjkdbasjkd"
+        android:textSize="22sp"
         />
 
     <LinearLayout
@@ -46,6 +57,7 @@
             android:layout_marginEnd="30dp"
             android:background="@drawable/like"
             android:onClick="onLikeButtonClicked"
+            android:layout_marginStart="20dp"
 
             />
 
@@ -64,7 +76,7 @@
             android:layout_height="40dp"
             android:gravity="center_horizontal"
             android:background="@drawable/dislike"
-            android:layout_marginStart="80dp"
+            android:layout_marginStart="90dp"
             android:onClick="onDislikeButtonClicked"
             android:layout_marginEnd="30dp"
             />
@@ -82,4 +94,55 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp"
+        >
+
+        <ImageButton
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/btn_read_reviews"
+            android:background="@drawable/read_review"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="35dp"
+            android:onClick="onReadReviewsClicked"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="Read Reviews"
+            android:layout_marginEnd="50dp"
+            android:gravity="center_vertical"
+            android:layout_marginStart="2dp"
+            android:textSize="14sp"
+            />
+
+        <ImageButton
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/btn_write_reviews"
+            android:background="@drawable/write_review"
+            android:layout_gravity="center_horizontal"
+            android:onClick="onWriteReviewClicked"
+
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="Add Review"
+            android:gravity="center_vertical"
+            android:layout_marginStart="2dp"
+            android:textSize="12sp"
+            />
+
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

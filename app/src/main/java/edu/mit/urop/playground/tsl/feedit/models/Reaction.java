@@ -12,13 +12,13 @@ public class Reaction {
 
     //id of the situation this reaction is associated with.
 
-    String reactionId;
+    String mReactionId;
     String mDescription;
     int mNumberLikes;
     int mNumberDislikes;
     int mSituationId;
     String mTitle;
-    List<String> mReviews;
+    String mSituationText;
 
 
     //Default constructor for read operations - and the Parceler library.
@@ -27,33 +27,35 @@ public class Reaction {
 
     public Reaction(String id, int situationId,
                     String title, String description,
-                    int numberLikes, int numberDislikes, List<String> reviews){
+                    int numberLikes, int numberDislikes,
+                    String situationText){
 
-        reactionId = id;
+        mReactionId = id;
         mSituationId = situationId;
         mTitle = title;
         mDescription = description;
         mNumberLikes = numberLikes;
         mNumberDislikes = numberDislikes;
-        mReviews = reviews;
+        mSituationText = situationText;
+
     }
 
-    public String getReactionId() { return reactionId; }
+    public String getmReactionId() { return mReactionId; }
 
-    public int getSituationId() {
+    public int getmSituationId() {
         return mSituationId;
     }
 
-    public String getTitle() {
+    public String getmTitle() {
         return mTitle;
     }
 
-    public String getDescription() {return mDescription;}
+    public String getmDescription() {return mDescription;}
 
-    public int getNumberLikes() { return mNumberLikes; }
+    public int getmNumberLikes() { return mNumberLikes; }
 
-    public int getNumberDislikes() { return mNumberDislikes; }
+    public int getmNumberDislikes() { return mNumberDislikes; }
 
-    public List<String> getReviews(){ return mReviews; }
+    public String getmSituationText(){ return mSituationText;}
 
 }

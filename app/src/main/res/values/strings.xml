@@ -1,8 +1,8 @@
 <resources>
 
     <string name="app_name">FeedIt</string>
-    <string name="facebook_app_id"></string>
-    <string name="fb_login_protocol_scheme"></string>
+    <string name="facebook_app_id">2039858162739443</string>
+    <string name="fb_login_protocol_scheme">fb2039858162739443</string>
     <string name="sign_out_button">Sign Out</string>
 
 </resources>

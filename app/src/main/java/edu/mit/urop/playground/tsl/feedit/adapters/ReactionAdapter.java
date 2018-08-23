@@ -5,12 +5,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
 
-import edu.mit.urop.playground.tsl.feedit.OnReactionClickListener;
 import edu.mit.urop.playground.tsl.feedit.R;
 import edu.mit.urop.playground.tsl.feedit.models.Reaction;
 
@@ -45,9 +45,9 @@ public class ReactionAdapter extends RecyclerView.Adapter<ReactionAdapter.Reacti
     @Override
     public void onBindViewHolder(@NonNull ReactionViewHolder holder, int position) {
 
-        holder.mReactionTitle.setText(mReactionDataSource.get(position).getTitle());
-        holder.mLikeCount.setText(String.valueOf(mReactionDataSource.get(position).getNumberLikes()));
-        holder.mDislikeCount.setText(String.valueOf(mReactionDataSource.get(position).getNumberDislikes()));
+        holder.mReactionTitle.setText(mReactionDataSource.get(position).getmTitle());
+        holder.mLikeCount.setText(String.valueOf(mReactionDataSource.get(position).getmNumberLikes()));
+        holder.mDislikeCount.setText(String.valueOf(mReactionDataSource.get(position).getmNumberDislikes()));
 
     }
 
@@ -60,6 +60,7 @@ public class ReactionAdapter extends RecyclerView.Adapter<ReactionAdapter.Reacti
 
         TextView mReactionTitle, mLikeCount, mDislikeCount;
         ImageView mLikeButton, mDislikeButton;
+        Button shareButton;
 
         public ReactionViewHolder(View itemView) {
             super(itemView);
@@ -69,14 +70,25 @@ public class ReactionAdapter extends RecyclerView.Adapter<ReactionAdapter.Reacti
             mDislikeButton = itemView.findViewById(R.id.iw_number_dislikes);
             mLikeCount = itemView.findViewById(R.id.tw_likes_count);
             mDislikeCount = itemView.findViewById(R.id.tw_dislike_count);
+            shareButton = itemView.findViewById(R.id.btn_share_reaction);
 
             itemView.setOnClickListener(this);
+            shareButton.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
 
-            clickListener.onReactionCardTapped(getAdapterPosition());
+            switch (v.getId()){
+
+                case R.id.reaction_card_view:
+                    clickListener.onReactionCardTapped(getAdapterPosition());
+                    break;
+
+                case R.id.btn_share_reaction:
+                    clickListener.onReactionShareTapped(getAdapterPosition());
+                    break;
+            }
 
         }
     }

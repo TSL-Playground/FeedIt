@@ -44,7 +44,6 @@ dependencies {
     implementation 'com.facebook.android:facebook-android-sdk:[4,5)'
     implementation 'com.facebook.android:facebook-login:[4,5)'
 
-
     //Parceler library for de(serializing model POJOs to pass them within Bundles.)
     implementation 'org.parceler:parceler-api:1.1.11'
     annotationProcessor 'org.parceler:parceler:1.1.11'

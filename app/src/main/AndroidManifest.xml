@@ -43,7 +43,9 @@
         <activity android:name=".screens.ScanResultActivity" />
         <activity android:name=".screens.AddReactionActivity" />
         <activity android:name=".screens.ViewReactionsActivity" />
-        <activity android:name=".screens.ReactionDetailsActivity"></activity>
+        <activity android:name=".screens.ReactionDetailsActivity" />
+        <activity android:name=".screens.DisplayReviewsActivity" />
+        <activity android:name=".screens.WriteReviewActivity"></activity>
     </application>
 
 </manifest>

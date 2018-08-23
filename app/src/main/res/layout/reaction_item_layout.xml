@@ -9,6 +9,7 @@
     cardview:cardCornerRadius="10dp"
     cardview:cardElevation="1dp"
     cardview:cardUseCompatPadding="true"
+    android:id="@+id/reaction_card_view"
     >
 
     <LinearLayout
@@ -76,6 +77,16 @@
                 android:textStyle="bold"
                 />
 
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimary"
+                android:textColor="#FFFFFF"
+                android:id="@+id/btn_share_reaction"
+                android:text="Share"
+
+                />
 
         </LinearLayout>
 

@@ -1,6 +1,8 @@
 package edu.mit.urop.playground.tsl.feedit.screens;
 
 import android.content.Intent;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -33,14 +35,12 @@ public class ReactionDetailsActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reaction_details);
 
-        Intent fromViewReactionsActivity = getIntent();
-        if(fromViewReactionsActivity != null ){
 
+        Intent starterIntent = getIntent();
 
-            passedReaction = Parcels.unwrap(fromViewReactionsActivity.getParcelableExtra(EXTRA_RECEPTION_KEY));
+        if(starterIntent != null ){
 
-            Log.d("NULL", String.valueOf(passedReaction.getTitle()));
-
+                passedReaction = Parcels.unwrap(starterIntent.getParcelableExtra(EXTRA_RECEPTION_KEY));
         }
 
         bindViews();
@@ -55,10 +55,10 @@ public class ReactionDetailsActivity extends AppCompatActivity{
     private void displayReactionData(Reaction reaction){
 
 
-        twTitle.setText(reaction.getTitle().toString());
-        twDescription.setText(reaction.getDescription().toString());
-        twNumberOfLikes.setText(String.valueOf(reaction.getNumberLikes()));
-        twNumberOfDislikes.setText(String.valueOf(reaction.getNumberDislikes()));
+        twTitle.setText(reaction.getmTitle().toString());
+        twDescription.setText(reaction.getmDescription().toString());
+        twNumberOfLikes.setText(String.valueOf(reaction.getmNumberLikes()));
+        twNumberOfDislikes.setText(String.valueOf(reaction.getmNumberDislikes()));
 
 
     }
@@ -83,7 +83,7 @@ public class ReactionDetailsActivity extends AppCompatActivity{
 
         Toast.makeText(this, "LIKE BUTTON WAS TAPPED", Toast.LENGTH_SHORT).show();
 
-        int currentRating  = passedReaction.getNumberLikes();
+        int currentRating  = passedReaction.getmNumberLikes();
 
         Log.d("FIRST", String.valueOf(currentRating));
 
@@ -92,17 +92,17 @@ public class ReactionDetailsActivity extends AppCompatActivity{
         Log.d("UPDATED", String.valueOf(newRating));
 
         updatedReaction = new Reaction(
-                passedReaction.getReactionId(),
-                passedReaction.getSituationId(),
-                passedReaction.getTitle(),
-                passedReaction.getDescription(),
+                passedReaction.getmReactionId(),
+                passedReaction.getmSituationId(),
+                passedReaction.getmTitle(),
+                passedReaction.getmDescription(),
                 newRating,
-                passedReaction.getNumberDislikes(), passedReaction.getReviews());
+                passedReaction.getmNumberDislikes(), passedReaction.getmSituationText());
 
 
-        mDatabaseRef.child(passedReaction.getReactionId()).child("mNumberLikes").setValue(updatedReaction.getNumberLikes());
+        mDatabaseRef.child(passedReaction.getmReactionId()).child("mNumberLikes").setValue(updatedReaction.getmNumberLikes());
 
-        twNumberOfLikes.setText(String.valueOf(updatedReaction.getNumberLikes()));
+        twNumberOfLikes.setText(String.valueOf(updatedReaction.getmNumberLikes()));
 
         passedReaction = updatedReaction;
     }
@@ -111,7 +111,7 @@ public class ReactionDetailsActivity extends AppCompatActivity{
 
         Toast.makeText(this, "DISLIKE BUTTON WAS TAPPED", Toast.LENGTH_SHORT).show();
 
-        int currentRating  = passedReaction.getNumberDislikes();
+        int currentRating  = passedReaction.getmNumberDislikes();
 
         Log.d("FIRST", String.valueOf(currentRating));
 
@@ -120,22 +120,40 @@ public class ReactionDetailsActivity extends AppCompatActivity{
         Log.d("UPDATED", String.valueOf(newRating));
 
         updatedReaction = new Reaction(
-                passedReaction.getReactionId(),
-                passedReaction.getSituationId(),
-                passedReaction.getTitle(),
-                passedReaction.getDescription(),
-                passedReaction.getNumberLikes(),
-                newRating, passedReaction.getReviews());
+                passedReaction.getmReactionId(),
+                passedReaction.getmSituationId(),
+                passedReaction.getmTitle(),
+                passedReaction.getmDescription(),
+                passedReaction.getmNumberLikes(),
+                newRating, passedReaction.getmSituationText());
 
 
-        mDatabaseRef.child(passedReaction.getReactionId()).child("mNumberDislikes").setValue(updatedReaction.getNumberDislikes());
+        mDatabaseRef.child(passedReaction.getmReactionId()).child("mNumberDislikes").setValue(updatedReaction.getmNumberDislikes());
 
-        twNumberOfDislikes.setText(String.valueOf(updatedReaction.getNumberDislikes()));
+        twNumberOfDislikes.setText(String.valueOf(updatedReaction.getmNumberDislikes()));
 
         passedReaction = updatedReaction;
 
     }
 
+
+    public void onReadReviewsClicked(View view){
+
+        Intent toDisplayReviews = new Intent(this, DisplayReviewsActivity.class);
+
+        Parcelable p = Parcels.wrap(passedReaction);
+        Log.d(TAG, String.valueOf(p == null));
+
+        toDisplayReviews.putExtra(DisplayReviewsActivity.EXTRA_RECEPTION_KEY, Parcels.wrap(passedReaction));
+        startActivity(toDisplayReviews);
+    }
+
+    public void onWriteReviewClicked(View view){
+
+        Intent toWriteReviewActivity = new Intent(this, WriteReviewActivity.class);
+        toWriteReviewActivity.putExtra(WriteReviewActivity.EXTRA_RECEPTION_KEY, Parcels.wrap(passedReaction));
+        startActivity(toWriteReviewActivity);
+    }
 
 
 }

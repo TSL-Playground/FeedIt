@@ -16,6 +16,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import edu.mit.urop.playground.tsl.feedit.R;
 import edu.mit.urop.playground.tsl.feedit.models.Reaction;
 
@@ -66,8 +70,12 @@ public class AddReactionActivity extends AppCompatActivity{
         String autogenReactionId = mDatabaseFeedIt.push().getKey(); // auto-generated unique id for the reaction.
 
 
+
         //Default values of number of likes and dislikes are 0. (last two arguments of the constructor.)
-        Reaction reaction = new Reaction(autogenReactionId, mSituationId, reactionTitle, reactionDescription, 0, 0, null);
+
+
+        Reaction reaction = new Reaction(autogenReactionId, mSituationId,
+                reactionTitle, reactionDescription, 0, 0, mSituationText);
 
         mDatabaseFeedIt.child(autogenReactionId).setValue(reaction);
 

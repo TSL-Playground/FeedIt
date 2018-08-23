@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".screens.WriteReviewActivity">
+
+    <EditText
+        android:id="@+id/et_review_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textAutoComplete|textAutoCorrect"
+        android:maxLength="280"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:hint="What do you think about that reaction?"
+        android:maxLines="10"
+        android:textColor="@color/colorPrimary"
+
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onSubmitReviewClicked"
+        android:id="@+id/btn_submit_review"
+        android:textSize="22sp"
+        android:background="@color/colorPrimary"
+        android:textColor="#FFFFFF"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/et_review_input"
+        android:text="Submit"
+        />
+
+</RelativeLayout>
