@@ -42,13 +42,9 @@ public class Reaction {
 
     public String getmReactionId() { return mReactionId; }
 
-    public int getmSituationId() {
-        return mSituationId;
-    }
+    public int getmSituationId() { return mSituationId; }
 
-    public String getmTitle() {
-        return mTitle;
-    }
+    public String getmTitle() { return mTitle; }
 
     public String getmDescription() {return mDescription;}
 

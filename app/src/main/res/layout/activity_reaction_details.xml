@@ -6,6 +6,7 @@
     tools:context=".screens.ReactionDetailsActivity"
     android:orientation="vertical"
     android:padding="16dp"
+    android:background="#FFFF7F"
     >
 
     <ScrollView
@@ -27,6 +28,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         tools:text="Tested Reaction"
         android:gravity="center_horizontal"
+        android:textColor="#660066"
         />
 
     <TextView
@@ -38,6 +40,8 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Caption"
         tools:text="aldhsadjhsakdjhaskdjshdkasjhdjskhdasjkdhasjkdbasjkd"
         android:textSize="22sp"
+        android:textColor="#660066"
+
         />
 
     <LinearLayout
@@ -46,6 +50,7 @@
         android:orientation="horizontal"
         android:padding="10dp"
         android:layout_marginTop="30dp"
+
 
         >
 
@@ -68,6 +73,8 @@
             android:textSize="22sp"
             tools:text="12"
             android:textStyle="bold"
+            android:textColor="#660066"
+
             />
 
         <ImageButton
@@ -88,6 +95,8 @@
             android:textSize="22sp"
             tools:text="9"
             android:textStyle="bold"
+            android:textColor="#660066"
+
             />
 
 
@@ -119,6 +128,8 @@
             android:gravity="center_vertical"
             android:layout_marginStart="2dp"
             android:textSize="14sp"
+            android:textColor="#660066"
+
             />
 
         <ImageButton
@@ -139,6 +150,8 @@
             android:gravity="center_vertical"
             android:layout_marginStart="2dp"
             android:textSize="12sp"
+            android:textColor="#660066"
+
             />
 
 

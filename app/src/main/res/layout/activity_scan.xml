@@ -6,10 +6,12 @@
     tools:context=".screens.ScanActivity"
     android:orientation="vertical"
     android:padding="16dp"
+    android:background="#FF669A"
     >
 
     <TextView
-        android:layout_marginTop="16dp"
+
+        android:layout_marginTop="40dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tw_user_greeting"
@@ -18,10 +20,11 @@
         android:textStyle="bold"
         android:gravity="center_horizontal"
         android:textColor="@color/colorPrimaryDark"
-
+        android:layout_marginBottom="30dp"
         />
 
     <Button
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/circle_button"

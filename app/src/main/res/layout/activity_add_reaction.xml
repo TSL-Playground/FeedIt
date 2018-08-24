@@ -7,6 +7,7 @@
     tools:context=".screens.AddReactionActivity"
     android:orientation="vertical"
     android:padding="20dp"
+    android:background="#FFFF7F"
     >
 
     <ScrollView
@@ -55,6 +56,8 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="90dp"
         android:text="Submit"
+        android:background="@color/colorPrimary"
+        android:textColor="#FFFFFF"
         />
 
         </LinearLayout>

@@ -93,8 +93,6 @@ public class ReactionAdapter extends RecyclerView.Adapter<ReactionAdapter.Reacti
         }
     }
 
-
-
     public void updateDataSource(List<Reaction> reactions){
 
         mReactionDataSource = reactions;

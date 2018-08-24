@@ -75,11 +75,7 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ReviewView
         @Override
         public void onClick(View v) {
 
-
-
               mReviewClickListener.onShareButtonClicked(getAdapterPosition());
-
-
         }
     }
 }
