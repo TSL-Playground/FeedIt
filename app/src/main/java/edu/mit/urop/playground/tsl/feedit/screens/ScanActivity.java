@@ -16,12 +16,19 @@ import org.json.JSONObject;
 
 import edu.mit.urop.playground.tsl.feedit.R;
 
+
+/**
+ * Scan activity is the first screen after the user sign-in. This activity starts and processes the QR Code scanning.
+ *
+ * For the actual barcode scanning, Zxing open-source library is used. (Check build.gradle (Module:app) file to alter dependency.)
+ *
+ */
 public class ScanActivity extends AppCompatActivity {
 
 
 
-    private IntentIntegrator qrScanner;
-    public static final String RECEIVE_EXTRA_KEY = "x";
+    private IntentIntegrator qrScanner; //Client object for the Zxing API.
+    public static final String RECEIVE_EXTRA_KEY = "x"; // arbitrary constant.
     TextView mGreetingTw;
 
     @Override
@@ -29,8 +36,9 @@ public class ScanActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan);
 
-        mGreetingTw = findViewById(R.id.tw_user_greeting);
+        mGreetingTw = findViewById(R.id.tw_user_greeting); // initialize the user greeting textview.
 
+        //Setting up the action bar which will provide the user with an in-app back button.
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
@@ -38,16 +46,24 @@ public class ScanActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        //This activity will be started by the MainActivity.
         Intent fromMainActivity = getIntent();
 
+        /**
+         *If the intent that started this activity has an "extra" that is sent to this activity,
+         * receive it with the receive key of this activity and set it to the textview.(message will be the user's name.)
+
+         **/
         if(fromMainActivity!= null && fromMainActivity.hasExtra(RECEIVE_EXTRA_KEY))
             mGreetingTw.setText("Hello, " + fromMainActivity.getStringExtra(RECEIVE_EXTRA_KEY));
 
 
+        //Instantiate the client for the Zxing API client.
         qrScanner = new IntentIntegrator(this);
 
     }
 
+    //Callback for the action bar back button.
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
@@ -55,7 +71,16 @@ public class ScanActivity extends AppCompatActivity {
     }
 
 
-
+    /**
+     * The scanning operation is passed to a client Zxing application.
+     * If the user's device does not currently have it installed,they will be prompted for permission to install this app.
+     * After installation, Feed-it will automatically start that app, and allow the user to scan the QR code.
+     *
+     * Format of the information that's encoded in the QR codes is JSON. This method processes the JSON and passes the info
+     * as extras to the ScanResultActivity.
+     *
+     *
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
@@ -94,6 +119,8 @@ public class ScanActivity extends AppCompatActivity {
         }
     }
 
+
+    //Callback for the circle scan button displayed on the screen.
     public void scanButtonClicked(View view){
         qrScanner.initiateScan();
     }

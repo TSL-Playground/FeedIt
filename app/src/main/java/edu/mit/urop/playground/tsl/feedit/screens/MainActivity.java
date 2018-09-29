@@ -30,6 +30,11 @@ import com.google.android.gms.common.api.Status;
 import edu.mit.urop.playground.tsl.feedit.R;
 
 
+/**
+ *This is the launcher activity for the app.
+ *Greets the user and offers the options of logging in using Facebook or Google APIs.
+ */
+
 public class MainActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, View.OnClickListener{
 
 
@@ -38,10 +43,10 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     AccessToken accessToken = AccessToken.getCurrentAccessToken();
     boolean isLoggedIn = accessToken != null && !accessToken.isExpired();
 
-    //Google stuff.
+    //Objects for the Google sign-in setup.
     SignInButton mGoogleSignInButton;
     GoogleApiClient mGoogleApiClient;
-    private static final int REQUEST_CODE_GOOGLE_SIGN_IN = 10;
+    private static final int REQUEST_CODE_GOOGLE_SIGN_IN = 10; //arbitrary constant.
 
 
 
@@ -51,15 +56,14 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         setContentView(R.layout.activity_main);
 
         // Facebook sign in setup.
-        callbackManager = CallbackManager.Factory.create();
+        callbackManager = CallbackManager.Factory.create(); //initialize the callback manager which is the FB API client.
         registerCallbackForFacebook();
 
 
 
         //Google sign in setup.
-
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail()
+                .requestEmail()  // developer can add methods to ask additional information. (not recommended.)
                 .build();
 
         mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -67,6 +71,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
 
+
+        // Initialize the google sign in button and set an onclick listener to make it reactive.
         mGoogleSignInButton = findViewById(R.id.google_button);
         mGoogleSignInButton.setOnClickListener(this);
 
@@ -86,6 +92,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                         startActivity(toScanActivity);
                     }
 
+                    //Called if the user interrupts the facebook login by some action.
                     @Override
                     public void onCancel() {
 
@@ -93,6 +100,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
                     }
 
+                    //Called if there is a server error on the Facebook's side.
                     @Override
                     public void onError(FacebookException exception) {
 
@@ -111,6 +119,15 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
         startActivityForResult(signInIntent, REQUEST_CODE_GOOGLE_SIGN_IN);
     }
+
+
+    /**
+     * Helper function called after the user attempts to sign-in with Google.
+     * If successful, greet the user and take them to scan screen. Else, notify of login failure.
+     *
+     * @param : Result code that will be passed by the OnActivityResult method. (read code below.)
+     */
+
 
     private void handleGoogleSignInResult(GoogleSignInResult result){
 
@@ -131,7 +148,13 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         }
     }
 
-
+    /**
+     * This method will be called by default in onDestroy() and will sign the user out.
+     *
+     * Note: If a future developer wants to change this default behavior of the app and chooses to let the
+     * user remain logged in, they should just delete the call to this method in onDestroy().
+     *
+     */
     private void googleSignOut(){
 
         Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(new ResultCallback<Status>() {
@@ -142,7 +165,10 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         });
     }
 
-
+    /**
+     * Initialize the action bar menu.
+     *
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -152,6 +178,14 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
     }
 
+
+    /**
+     * Defines the action to be taken when the user taps on an option from the drop-down menu.
+     * Options are start the scan activity, and sign out.
+     *
+     *  A future developer can choose to add to/remove from options to this menu. They should write their method
+     *  and include the call of those methods in onOptionsItemSelected().
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -176,7 +210,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         Toast.makeText(MainActivity.this, "Connection failed, Google service currently unavailable.", Toast.LENGTH_SHORT).show();
     }
 
-    //Sign the user out if they kill the app process on their phone (desired default behavior).
+    //Sign the user out if they kill the app process on their phone (current default behavior of the app).
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -205,6 +239,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         super.onActivityResult(requestCode, resultCode, data);
     }
 
+
+
     @Override
     public void onClick(View v) {
 
@@ -212,6 +248,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         if(v.getId() == R.id.google_button){
             startGoogleSignInIntent();
         }
+
+        //Facebook sign-in button has its onCLickListener set up in onCreate(). Therefore, it is missing in this method.
     }
 }
 

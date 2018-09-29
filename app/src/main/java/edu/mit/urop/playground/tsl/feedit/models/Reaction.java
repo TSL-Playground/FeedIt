@@ -5,7 +5,13 @@ import org.parceler.Parcel;
 
 import java.util.List;
 
-@Parcel
+
+/**
+ * POJO model class for the Reaction cards.
+ *
+ */
+
+@Parcel // Parcel notation is for the external Parceler package to recognize this class (de)serializable.
 public class Reaction {
 
     //omitted reaction id. - FirebaseDB will created this itself.
