@@ -16,6 +16,9 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import org.parceler.Parcels;
 
+import java.io.IOException;
+import java.net.URLConnection;
+
 import edu.mit.urop.playground.tsl.feedit.R;
 import edu.mit.urop.playground.tsl.feedit.models.Reaction;
 
